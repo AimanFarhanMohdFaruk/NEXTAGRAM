@@ -8,7 +8,7 @@ import {Card, CardImg} from 'reactstrap';
 const UserImages = ({userId}) => {
     
     const [userImages, setUserImages] = useState([]);
-    const [isloading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
 
@@ -23,7 +23,7 @@ const UserImages = ({userId}) => {
         console.log('ERROR: ', error)
       })
     
-}, [!isloading,userId])
+}, [isLoading,userId])
 
     if (isloading) {
         return <Loader width="150px" height="150px"/>

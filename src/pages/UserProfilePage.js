@@ -29,7 +29,7 @@ const UserProfilePage = () => {
         .catch(error => {
           console.log('ERROR ', error)
         })
-      }, [id])
+      }, [isLoading, id])
 
 
 
@@ -43,7 +43,7 @@ const UserProfilePage = () => {
         .catch(error => {
           console.log('ERROR ', error)
         })
-      }, [!isLoading,id])
+      }, [isLoading,id])
     
       if (isLoading) {
         return <img src={loadgif} alt="Loader"/>
