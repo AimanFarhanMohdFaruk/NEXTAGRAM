@@ -16,7 +16,7 @@ const UserImages = ({userId}) => {
         .then(result => {
         
         setUserImages(result.data)
-        setIsLoading(!isLoading)
+        setIsLoading(!isloading)
     })
     .catch(error => {
         // If unsuccessful, we notify users what went wrong
