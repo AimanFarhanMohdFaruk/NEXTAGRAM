@@ -15,7 +15,7 @@ const AuthModal = ({isOpen, toggle, toggleLoggedIn, loggedIn}) => {
         {
           isLogin
             ? <LoginForm toggle={toggle} toggleIsLogin={toggleIsLogin} toggleLoggedIn={toggleLoggedIn} loggedIn={loggedIn}/>
-            : <SignUpForm toggle={toggle} toggleIsLogin={toggleIsLogin} />
+            : <SignUpForm toggle={toggle} toggleIsLogin={toggleIsLogin} toggleLoggedIn={toggleLoggedIn}/>
         }
     </Modal>
   )

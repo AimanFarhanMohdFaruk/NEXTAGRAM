@@ -2,17 +2,23 @@ import React, {useState} from "react"
 import {ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, FormFeedback} from "reactstrap"
 import axios from "axios"
 import {toast} from "react-toastify"
+import { useHistory } from 'react-router-dom';
 
-const SignUpForm = ({toggleIsLogin, toggle}) => {
+
+const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [delay, setDelay] = useState(null);
   const [usernameValid, setUsernameValid] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true)
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const history = useHistory()
 
 
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     axios({
       method: 'POST',
       url: 'https://insta.nextacademy.com/api/v1/users/',
@@ -33,6 +39,9 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
         draggable: true,
         progress: undefined,
         });
+        toggleLoggedIn()
+        localStorage.setItem('jwt', response.data.auth_token)
+        history.push("/profile")
     })
     .catch(error => {
 
@@ -52,7 +61,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
     })
   }
 
-  const handleUsernameInput = e => {
+  const handleInput = e => {
     // clears queue so that the old keystrokes don't trigger axios call
     clearTimeout(delay);
     const newUsername = e.target.value;
@@ -82,6 +91,15 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
     }, 500);
 
     setDelay(newDelay);
+    if(e.target.name==="email"){
+      setEmail(e.target.value)
+    }
+    if(e.target.name ==="password"){
+      setPassword(e.target.value)
+    }
+    if(e.target.name === "confirmPassword"){
+      setConfirmPassword(e.target.value)
+    }
   };
 
   const getInputProp = () => {
@@ -117,6 +135,28 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
     }
   };
 
+  const getPwInputProps =() =>{
+    if(confirmPassword.length === 0){
+      return null
+    }
+    if(password === confirmPassword){
+      return {valid:true}
+    }else {
+      return {invalid:true}
+    }
+  }
+  const checkPassword = () =>{
+    if(!confirmPassword.length){
+      return null
+    }
+    if(password === confirmPassword){
+      return <FormText valid>Passwords match!</FormText>
+    } else {
+      return <FormText invalid>Passwords do not match</FormText>
+    }
+  }
+
+
   return <>
     <Form>
       <ModalHeader toggle={toggle}>Sign Up</ModalHeader>
@@ -129,7 +169,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
               id="username" 
               placeholder="Key in username" 
               value={username} 
-              onChange={handleUsernameInput}
+              onChange={handleInput}
               {...getInputProp()}/>
               {getFormFeedback()}
           </FormGroup>
@@ -141,7 +181,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
               id="email" 
               placeholder="Key in email" 
               value={email} 
-              onChange={(e)=>{setEmail(e.target.value)}} />
+              onChange={handleInput} />
           </FormGroup>
           <FormGroup>
               <Label for="password">Password</Label>
@@ -151,7 +191,17 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
               id="password" 
               placeholder="Key in password" 
               value={password} 
-              onChange={(e)=>{setPassword(e.target.value)}} />
+              onChange={handleInput} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Confirm Password</Label>
+            <Input 
+              type="password" 
+              name="confirmPassword" 
+              value={confirmPassword} 
+              onChange={handleInput} 
+              {...getPwInputProps()}/>
+              {checkPassword()}
           </FormGroup>
           <p>Already a member? <a href="$" onClick ={(e) =>{
             e.preventDefault()
@@ -162,7 +212,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
         <Button 
           color="primary" 
           disabled={!(username && email && password)} 
-          onClick={handleSubmit}>Sign Up</Button>{' '}
+          onClick={handleSubmit} >Sign Up</Button>{' '}
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </ModalFooter>
     </Form>
