@@ -37,7 +37,7 @@ function App() {
     .catch(error => {
       console.log('ERROR ', error)
     })
-  }, [])
+  }, [isLoading])
 
   if (isLoading) {
     return (

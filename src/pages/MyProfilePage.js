@@ -45,7 +45,7 @@ const MyProfilePage = () => {
         .catch(error => {
             console.log(error)
         })
-    },[])
+    },[isLoading])
     
 
       if (isLoading) {
