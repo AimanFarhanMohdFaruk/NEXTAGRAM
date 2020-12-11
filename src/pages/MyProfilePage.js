@@ -28,7 +28,7 @@ const MyProfilePage = () => {
         .catch(error => {
             console.log(error)
         })
-    },[])
+    },[!isLoading])
 
     useEffect(() => {
         axios.get("https://insta.nextacademy.com/api/v1/images/me",
@@ -45,7 +45,7 @@ const MyProfilePage = () => {
         .catch(error => {
             console.log(error)
         })
-    },[])
+    },[!isLoading])
     
 
       if (isLoading) {

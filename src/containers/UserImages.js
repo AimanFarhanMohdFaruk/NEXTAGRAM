@@ -16,14 +16,14 @@ const UserImages = ({userId}) => {
         .then(result => {
         
         setUserImages(result.data)
-        setIsLoading(false)
+        setIsLoading(!isLoading)
     })
     .catch(error => {
         // If unsuccessful, we notify users what went wrong
         console.log('ERROR: ', error)
       })
     
-}, [userId])
+}, [!isloading,userId])
 
     if (isloading) {
         return <Loader width="150px" height="150px"/>
