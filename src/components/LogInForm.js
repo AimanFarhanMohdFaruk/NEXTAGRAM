@@ -9,8 +9,6 @@ import { useHistory } from 'react-router-dom'
 const LoginForm = ({toggleIsLogin, toggle, toggleLoggedIn, loggedIn}) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [delay, setDelay] = useState(null);
-  const [usernameValid, setUsernameValid] = useState(true);
   const history  = useHistory()
 
 
@@ -75,7 +73,7 @@ const handleUsernameInput = e => {
             <Label for="password">Password</Label>
             <Input type="password" name="password" id="password" placeholder="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
           </FormGroup>
-          <p>New member? <a href="#" onClick ={(e) =>{
+          <p>New member? <a  onClick ={(e) =>{
             e.preventDefault()
             toggleIsLogin()
           }}>Sign up here</a></p>

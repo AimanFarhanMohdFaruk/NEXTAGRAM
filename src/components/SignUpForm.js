@@ -153,7 +153,7 @@ const SignUpForm = ({toggleIsLogin, toggle}) => {
               value={password} 
               onChange={(e)=>{setPassword(e.target.value)}} />
           </FormGroup>
-          <p>Already a member? <a href="#" onClick ={(e) =>{
+          <p>Already a member? <a  onClick ={(e) =>{
             e.preventDefault()
             toggleIsLogin()
           }}>Log in here</a></p>

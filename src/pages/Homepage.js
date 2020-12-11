@@ -11,7 +11,7 @@ const  HomePage = ({users}) => {
 
               <div style={{textAlign:"center", display:"flex", flexDirection:"column"}}>  
                 <img 
-                src={user.profileImage} 
+                src={user.profileImage} alt="Pictures"
                 style={{width: '200px', margin:"10px 10px", borderRadius:"50%"}}/>
                 <Link 
                 style={{textDecoration:"none", color:"white"}} 

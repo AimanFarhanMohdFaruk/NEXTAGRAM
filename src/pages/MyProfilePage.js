@@ -49,14 +49,14 @@ const MyProfilePage = () => {
     
 
       if (isLoading) {
-        return <img src={loadgif}/>
+        return <img src={loadgif} alt="loading"/>
       }
 
 
     return(
     <div style={{backgroundColor:"#1b2021", height:"100vh"}}>
         <div style={{textAlign:'center'}}>
-            <img style={{width:"150px", height:"150px", borderRadius:"50%", paddingTop:"10px"}} src={user.profile_picture}/>
+            <img style={{width:"150px", height:"150px", borderRadius:"50%", paddingTop:"10px"}} src={user.profile_picture} alt="profilePicture"/>
             <h2 style={{color:"white"}}>{user.username}</h2>
         </div>
 

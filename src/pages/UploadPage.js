@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import {Form, FormGroup, FormText, Button, Input, Container, Jumbotron, Row} from 'reactstrap'
+import {Form, FormGroup, FormText, Button, Input, Jumbotron} from 'reactstrap'
 import axios from 'axios'
 import {toast} from 'react-toastify'
 
@@ -90,6 +90,7 @@ const UploadPage = () => {
             src={previewImage}
             width="50%"
             height="50%"
+            alt="Preview"
         />
         ) : (
         <h3  className="text-center">
