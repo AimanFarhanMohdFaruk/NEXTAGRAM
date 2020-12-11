@@ -23,9 +23,9 @@ const UserImages = ({userId}) => {
         console.log('ERROR: ', error)
       })
     
-}, [isLoading,userId])
+}, [])
 
-    if (isloading) {
+    if (isLoading) {
         return <Loader width="150px" height="150px"/>
     }
 
