@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, FormFeedback, FormText} from "reactstrap"
 import axios from "axios"
 import {toast} from "react-toastify"
@@ -30,6 +30,7 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
     })
     .then(response => {
       console.log(response)
+      toggle()
       toast.success(response.data.message, {
         position: "top-right",
         autoClose: 5000,
@@ -76,7 +77,6 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
           )
           .then(response => {
             console.log(response.data);
-            toggle()
             if (response.data.valid) {
               setUsernameValid(true);
             } else {
