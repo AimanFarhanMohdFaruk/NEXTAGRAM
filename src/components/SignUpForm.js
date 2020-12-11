@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, FormFeedback} from "reactstrap"
+import {ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, FormFeedback, FormText} from "reactstrap"
 import axios from "axios"
 import {toast} from "react-toastify"
 import { useHistory } from 'react-router-dom';
