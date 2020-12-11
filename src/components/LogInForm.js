@@ -73,7 +73,7 @@ const handleUsernameInput = e => {
             <Label for="password">Password</Label>
             <Input type="password" name="password" id="password" placeholder="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
           </FormGroup>
-          <p>New member? <a  onClick ={(e) =>{
+          <p>New member? <a href="$" onClick ={(e) =>{
             e.preventDefault()
             toggleIsLogin()
           }}>Sign up here</a></p>
