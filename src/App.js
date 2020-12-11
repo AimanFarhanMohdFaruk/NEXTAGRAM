@@ -25,8 +25,9 @@ function App() {
   const toggleLoggedIn = () => {
     setLoggedIn(true)
   }
-
-  useEffect(() => {
+  
+  if(isLoading == false){
+      useEffect(() => {
     
     axios.get('https://insta.nextacademy.com/api/v1/users')
     .then((result) => {
@@ -38,6 +39,8 @@ function App() {
       console.log('ERROR ', error)
     })
   }, [])
+  }
+
 
   if (isLoading) {
     return (
