@@ -91,6 +91,10 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
     }, 500);
 
     setDelay(newDelay);
+    
+  };
+
+  const handlePasswordEmail = (e) => {
     if(e.target.name==="email"){
       setEmail(e.target.value)
     }
@@ -100,7 +104,7 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
     if(e.target.name === "confirmPassword"){
       setConfirmPassword(e.target.value)
     }
-  };
+  }
 
   const getInputProp = () => {
     if (!username.length) {
@@ -189,7 +193,7 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
               id="email" 
               placeholder="Key in email" 
               value={email} 
-              onChange={handleInput} />
+              onChange={handlePasswordEmail} />
           </FormGroup>
           <FormGroup>
               <Label for="password">Password</Label>
@@ -199,7 +203,7 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
               id="password" 
               placeholder="Key in password" 
               value={password} 
-              onChange={handleInput} />
+              onChange={handlePasswordEmail} />
           </FormGroup>
           <FormGroup>
             <Label for="password">Confirm Password</Label>
@@ -207,7 +211,7 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
               type="password" 
               name="confirmPassword" 
               value={confirmPassword} 
-              onChange={handleInput} 
+              onChange={handlePasswordEmail} 
               {...getPwInputProps()}/>
               {checkPassword()}
           </FormGroup>
