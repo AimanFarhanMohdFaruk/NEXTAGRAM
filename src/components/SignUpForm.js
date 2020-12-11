@@ -156,6 +156,14 @@ const SignUpForm = ({toggleIsLogin, toggle, toggleLoggedIn}) => {
     }
   }
 
+  useEffect( () =>{
+    if(password === confirmPassword){
+      setPasswordValid(true)
+    } else {
+      setPasswordValid(false)
+    }
+  },[confirmPassword])
+
 
   return <>
     <Form>
