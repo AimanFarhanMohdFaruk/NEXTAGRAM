@@ -54,13 +54,13 @@ const MyProfilePage = () => {
 
 
     return(
-    <div style={{backgroundColor:"#1b2021", height:"100vh"}}>
+    <div style={{backgroundColor:"#1b2021"}}>
         <div style={{textAlign:'center'}}>
             <img style={{width:"150px", height:"150px", borderRadius:"50%", paddingTop:"10px"}} src={user.profile_picture} alt="profilePicture"/>
             <h2 style={{color:"white"}}>{user.username}</h2>
         </div>
 
-        <div style={{display:"flex", flexWrap:"wrap", margin:"0 1rem", paddingBottom:"3rem"}}>
+        <div style={{display:"flex", flexWrap:"wrap", margin:"0 1rem", paddingBottom:"3rem", backgroundColor:"#1b2021"}}>
               
               {loggedImages.map((eachImg, index) => {
                 return (

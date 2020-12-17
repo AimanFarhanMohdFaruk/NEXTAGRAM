@@ -2,19 +2,21 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Loader from "../components/Loader"
-import {Card, CardImg} from 'reactstrap';
+import {Card, CardBody, CardImg} from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons'
 
 
 const UserImages = ({userId}) => {
     
     const [userImages, setUserImages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    
 
     useEffect(() => {
 
         axios.get(`https://insta.nextacademy.com/api/v2/images?userId=${userId}`)
         .then(result => {
-        
         setUserImages(result.data)
         setIsLoading(!isLoading)
     })
@@ -23,7 +25,8 @@ const UserImages = ({userId}) => {
         console.log('ERROR: ', error)
       })
     
-}, [])
+    }, [])
+
 
     if (isLoading) {
         return <Loader width="150px" height="150px"/>
@@ -32,10 +35,13 @@ const UserImages = ({userId}) => {
     return (
         <div style={{display:"flex", flexWrap:"wrap", alignItems:"center", marginLeft:"5%"}}>
             {userImages.map((eachImg, index) => {
+                let imgId = eachImg.id
                 return (
+                    <>
                     <Card style={{width:"200px", margin:"10px"}}>                    
-                        <CardImg src={eachImg.url} alt="user images" style={{width: '150px', height:"150px", margin:"24px auto"}}/>
+                        <CardImg src={eachImg.url} alt="user images" id={imgId} style={{width: '150px', height:"150px", margin:"24px auto"}}/>
                     </Card>
+                    </>
                 )
             })}
         </div>

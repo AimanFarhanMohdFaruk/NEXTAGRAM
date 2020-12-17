@@ -8,6 +8,9 @@ import React from 'react'
 import {useParams} from "react-router-dom"
 import { CardImg } from 'reactstrap';
 
+import Comments from "../containers/Comments"
+import Likes from "../containers/Likes"
+
 
 const UserProfilePage = () => {
     const{id}= useParams()
@@ -20,8 +23,6 @@ const UserProfilePage = () => {
     useEffect(() => {
         axios.get(`https://insta.nextacademy.com/api/v1/users/${id}`)
         .then((result) => {
-        console.log(result.data.username)
-        console.log(result.data.profileImage)
         setProfileName(result.data.username)
         setProfilePicture(result.data.profileImage)
         setIsLoading(!isLoading)
@@ -31,12 +32,10 @@ const UserProfilePage = () => {
         })
       }, [])
 
-
-
     useEffect(() => {
-        axios.get(`https://insta.nextacademy.com/api/v1/images?userId=${id}`)
+        axios.get(`https://insta.nextacademy.com/api/v2/images?userId=${id}`)
         .then((result) => {
-        console.log(result.data)
+        console.log(result)
         setProfileImages(result.data)
         setIsLoading(!isLoading)
         })
@@ -56,12 +55,14 @@ const UserProfilePage = () => {
                 <h2 style={{color:"white"}}>{profileName}</h2>
             </div>
 
-            <div style={{display:"flex", flexWrap:"wrap", margin:"0 1rem", paddingBottom:"3rem"}}>
+            <div style={{display:"flex", flexWrap:"wrap", margin:"0 1rem", paddingBottom:"3rem", backgroundColor:"#1b2021"}}>
               
               {profileImages.map((eachImg, index) => {
                 return (
                   <div style={{position:"relative", margin:"0 auto", paddingTop:"10px", color:"#fff", cursor:"pointer"}}>                    
-                    <CardImg src={eachImg} alt="profile images" style={{width:"300px", height:"300px", margin:"24px auto"}} />
+                    <CardImg src={eachImg.url} id={eachImg.id} alt="profile images" style={{width:"300px", height:"300px", margin:"24px auto"}} />
+                    <span><Likes imageId={eachImg.id}/></span>
+                    <Comments imageId={eachImg.id}/>
                   </div>
                 )
               })}

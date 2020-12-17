@@ -42,7 +42,7 @@ function App() {
   if (isLoading) {
     return (
       
-           <Loader style={{width:"50%", height:"50%", position:"absolute", top:"0", left:"0"}}/>
+    <Loader style={{width:"50%", height:"50%", position:"absolute", top:"0", left:"0"}}/>
          
     )
   }

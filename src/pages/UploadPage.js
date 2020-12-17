@@ -30,6 +30,7 @@ const UploadPage = () => {
             headers:{ Authorization: `Bearer ${JWT}`}
         })
           .then(response => {
+            console.log(response)
             if(response.data.success){
                 setMessage("Image Uploaded Sucessfully")
                 setPreviewImage(null)
@@ -84,7 +85,7 @@ const UploadPage = () => {
         </Form>
         </Jumbotron>
 
-        <div className="card">
+        <div className="container card">
         {previewImage ? (
         <img
             src={previewImage}
