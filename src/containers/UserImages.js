@@ -3,8 +3,6 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Loader from "../components/Loader"
 import {Card, CardBody, CardImg} from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons'
 
 
 const UserImages = ({userId}) => {
